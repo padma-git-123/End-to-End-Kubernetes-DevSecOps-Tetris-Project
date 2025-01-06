@@ -7,7 +7,7 @@ pipeline {
     environment {
         SCANNER_HOME = tool 'sonar-scanner'
         GIT_REPO_NAME = "End-to-End-Kubernetes-DevSecOps-Tetris-Project"
-        GIT_USER_NAME = "praviteja999"
+        GIT_USER_NAME = "padma-git-123"
     }
     stages {
         stage('Cleaning Workspace') {
@@ -17,15 +17,15 @@ pipeline {
         }
         stage('Checkout from Git') {
             steps {
-                git branch: 'main', url: 'https://github.com/praviteja999/End-to-End-Kubernetes-DevSecOps-Tetris-Project.git'
+                git branch: 'main', url: 'https://github.com/padma-git-123/End-to-End-Kubernetes-DevSecOps-Tetris-Project.git'
             }
         }
         stage('Sonarqube Analysis') {
             steps {
                 dir('Tetris-V2') {
                     withSonarQubeEnv('sonar-server') {
-                        sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=TetrisVersion1.0 \
-                        -Dsonar.projectKey=TetrisVersion1.0"
+                        sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=tetris-project \
+                        -Dsonar.projectKey=tetris-project"
                     }
                 }
             }
